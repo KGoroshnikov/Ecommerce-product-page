@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="content.css">
+<link rel="stylesheet" href="lightbox.css">
+  
+  <title>Frontend Mentor | E-commerce product page</title>
+</head>
+<body>
+  <div class="header-container">
+    <div class="header">
+      <div class="side-header">
+        <img onclick="menuMobile()" class="hamburger-menu" src="images/icon-menu.svg" alt="menu">
+        <img class="logo" src="images/logo.svg" alt="logo">
+        <div class="header-buttons-conatiner">
+          <button class="header-button">
+            Collections
+            <div class="header-button-underline"></div>
+          </button>
+          <button class="header-button">
+            Men
+            <div class="header-button-underline"></div>
+          </button>
+          <button class="header-button">
+            Women
+            <div class="header-button-underline"></div>
+          </button>
+          <button class="header-button">
+            About
+            <div class="header-button-underline"></div>
+          </button>
+          <button class="header-button">
+            Contact
+            <div class="header-button-underline"></div>
+          </button>
+        </div>
+      </div>
+      <div class="side-header">
+        <button onclick="openCart()" class="shop-btn">
+          <img src="images/icon-cart.svg" alt="cart">
+        </button>
+        <img onclick="openCart()" class="icon-person" src="images/image-avatar.png" alt="icon-person">
+        <div id="cart-container">
+          <div class="cart-header">
+            <p>Cart</p>
+          </div>
+          <div class="cart-content">
+            <p id="empty-cart">Your cart is empty.</p>
+            <div id="cart-item">
+              <img class="item-icon" src="images/image-product-1-thumbnail.jpg" alt="thumbnail">
+              <div class="item-description-cart">
+                <p class="item-name-cart">Fall Limited Edition Sneakers</p>
+                <p id="item-amount-cart">$125.00 x 3 <span id="final-amount">$375.00</span></p>
+              </div>
+              <img onclick="removeItem()" class="item-delete" src="images/icon-delete.svg" alt="delete">
+            </div>
+            <button id="checkout-btn">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="underline-header"></div>
+    </div>
+    <div id="mobile-side-container">
+      <div id="mobile-side-js" class="mobile-side">
+        <button onclick="menuMobile()" class="mobile-side-exit">
+          <img src="images/icon-close.svg" alt="close">
+        </button>
+        <div class="mobile-btns-side">
+          <button class="header-button-mob">
+            Collections
+          </button>
+          <button class="header-button-mob">
+            Men
+          </button>
+          <button class="header-button-mob">
+            Women
+          </button>
+          <button class="header-button-mob">
+            About
+          </button>
+          <button class="header-button-mob">
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main-content">
+    <div class="images-container">
+      <img onclick="openLightbox()" id="big-img" src="images/image-product-1.jpg" alt="image-product">
+      <div class="small-images-container">
+        <img onclick="selectImage(0)" style="border-color: hsl(26, 100%, 55%); opacity: 0.5;" class="img-small" src="images/image-product-1-thumbnail.jpg" alt="image-product-1-thumbnail">
+        <img onclick="selectImage(1)" class="img-small" src="images/image-product-2-thumbnail.jpg" alt="image-product-2-thumbnail">
+        <img onclick="selectImage(2)" class="img-small" src="images/image-product-3-thumbnail.jpg" alt="image-product-3-thumbnail">
+        <img onclick="selectImage(3)" class="img-small" src="images/image-product-4-thumbnail.jpg" alt="image-product-4-thumbnail">
+      </div>
+      <div class="mobile-arrows">
+        <button onclick="mobileSkipImg(-1)" class="btn-mobile-prev btn-lightbox">
+          <img src="images/icon-previous.svg" alt="previous">
+        </button>
+        <button onclick="mobileSkipImg(1)" class="btn-mobile-next btn-lightbox">
+          <img src="images/icon-next.svg" alt="next">
+        </button>
+      </div>
+    </div>
+    <div class="item-description-container">
+      <p class="company-text">SNEAKER COMPANY</p>
+      <p class="item-name">Fall Limited Edition Sneakers</p>
+      <p class="item-description">These low-profile sneakers are your perfect casual wear 
+        companion. Featuring a durable rubber outer sole, 
+        they'll withstand everything the weather can offer.</p>
+      <div class="price-container">
+        <div class="price">
+          <p class="main-price">$125.00</p>
+          <p class="discount">50%</p>
+        </div>
+        <p class="old-price">$250.00</p>
+      </div>
+      <div class="item-buttons">
+        <div id="add-items-container">
+          <button onclick="changeAmount(-1)" class="add-btn">
+            <img src="images/icon-minus.svg" alt="minus">
+          </button>
+          <p id="amount-text">0</p>
+          <button onclick="changeAmount(1)" class="add-btn">
+            <img src="images/icon-plus.svg" alt="plus">
+          </button>
+        </div>
+        <button onclick="addToCart()" class="add-to-card-button">
+          <img src="images/icon-cart.svg" alt="icon-cart">
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: none;" id="lightbox-container">
+    <div class="lightbox">
+      <div class="lightbox-main-img">
+        <img id="main-lightbox" src="images/image-product-1.jpg" alt="image-product">
+        <div class="ui-lightbox">
+          <button onclick="skipImg_Lightbox(-1)" class="previous-btn btn-lightbox">
+            <img src="images/icon-previous.svg" alt="previous">
+          </button>
+          <button onclick="skipImg_Lightbox(1)" class="next-btn btn-lightbox">
+            <img src="images/icon-next.svg" alt="next">
+          </button>
+          <button onclick="closeLightbox()" class="close-btn">
+            <img src="images/icon-close.svg" alt="close">
+          </button>
+        </div>
+      </div>
+      <div class="lightbox-mini-imgs">
+        <img onclick="selectImage_Lightbox(0)" style="border-color: hsl(26, 100%, 55%); opacity: 0.5;" class="img-small-lightbox" src="images/image-product-1-thumbnail.jpg" alt="image-product-1-thumbnail">
+        <img onclick="selectImage_Lightbox(1)" class="img-small-lightbox" src="images/image-product-2-thumbnail.jpg" alt="image-product-2-thumbnail">
+        <img onclick="selectImage_Lightbox(2)" class="img-small-lightbox" src="images/image-product-3-thumbnail.jpg" alt="image-product-3-thumbnail">
+        <img onclick="selectImage_Lightbox(3)" class="img-small-lightbox" src="images/image-product-4-thumbnail.jpg" alt="image-product-4-thumbnail">
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
